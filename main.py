@@ -1,7 +1,7 @@
 import pytorch_lightning as pl
 
-from vpr_model import VPRModel
 from dataloaders.GSVCitiesDataloader import GSVCitiesDataModule
+from vpr_model import VPRModel
 
 if __name__ == '__main__':        
     datamodule = GSVCitiesDataModule(

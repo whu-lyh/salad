@@ -1,12 +1,14 @@
 # https://github.com/amaralibey/gsv-cities
 
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 from PIL import Image, ImageFile, UnidentifiedImageError
+
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 import torch
-from torch.utils.data import Dataset
 import torchvision.transforms as T
+from torch.utils.data import Dataset
 
 default_transform = T.Compose([
     T.ToTensor(),
@@ -14,7 +16,7 @@ default_transform = T.Compose([
 ])
 
 # NOTE: Hard coded path to dataset folder 
-BASE_PATH = '../data/GSVCities/'
+BASE_PATH = '/public/GSVCities/'
 
 if not Path(BASE_PATH).exists():
     raise FileNotFoundError(

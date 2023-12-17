@@ -1,15 +1,13 @@
-from os.path import join, exists
 from collections import namedtuple
-from scipy.io import loadmat
+from os.path import exists, join
 
-import torchvision.transforms as T
 import torch.utils.data as data
-
-
+import torchvision.transforms as T
 from PIL import Image, UnidentifiedImageError
+from scipy.io import loadmat
 from sklearn.neighbors import NearestNeighbors
-
-root_dir = '../data/Pittsburgh/'
+# the Pittsburgh30k is embedded inside the whole dataset
+root_dir = '/public/Pittsburgh250k/'
 
 if not exists(root_dir):
     raise FileNotFoundError(

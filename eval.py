@@ -1,17 +1,17 @@
-import torch
-from torch.utils.data import DataLoader
-import torchvision.transforms as T
-from tqdm import tqdm
 import argparse
 
+import torch
+import torchvision.transforms as T
+from torch.utils.data import DataLoader
+from tqdm import tqdm
 
-from vpr_model import VPRModel
-from utils.validation import get_validation_recalls
+from dataloaders.val.MapillaryDataset import MSLS
 # Dataloader
 from dataloaders.val.NordlandDataset import NordlandDataset
-from dataloaders.val.MapillaryDataset import MSLS
 from dataloaders.val.PittsburghDataset import PittsburghDataset
 from dataloaders.val.SPEDDataset import SPEDDataset
+from utils.validation import get_validation_recalls
+from vpr_model import VPRModel
 
 VAL_DATASETS = ['MSLS', 'pitts30k_test', 'pitts250k_test', 'Nordland', 'SPED']
 
