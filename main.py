@@ -1,7 +1,11 @@
+
 import pytorch_lightning as pl
+import torch
 
 from dataloaders.GSVCitiesDataloader import GSVCitiesDataModule
 from vpr_model import VPRModel
+
+torch.set_float32_matmul_precision('high')
 
 if __name__ == '__main__':        
     datamodule = GSVCitiesDataModule(
@@ -11,7 +15,7 @@ if __name__ == '__main__':
         shuffle_all=False, # shuffle all images or keep shuffling in-city only
         random_sample_from_each_place=True,
         image_size=(224, 224),
-        num_workers=10,
+        num_workers=12,
         show_data_stats=True,
         val_set_names=['pitts30k_val', 'pitts30k_test', 'msls_val'], # pitts30k_val, pitts30k_test, msls_val
     )
@@ -70,9 +74,9 @@ if __name__ == '__main__':
         devices=1,
         default_root_dir=f'./logs/', # Tensorflow can be used to viz 
         num_nodes=1,
-        num_sanity_val_steps=0, # runs a validation step before stating training
+        num_sanity_val_steps=0, # runs a validation step before stating training, but will get nan in final results, it's ok!!!
         precision='16-mixed', # we use half precision to reduce  memory usage
-        max_epochs=4,
+        max_epochs=10,
         check_val_every_n_epoch=1, # run validation every epoch
         callbacks=[checkpoint_cb],# we only run the checkpointing callback (you can add more)
         reload_dataloaders_every_n_epochs=1, # we reload the dataset to shuffle the order

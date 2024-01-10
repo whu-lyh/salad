@@ -37,7 +37,7 @@ class MSLS(Dataset):
         # concatenate reference images then query images so that we can use only one dataloader
         self.images = np.concatenate((self.dbImages, self.qImages[self.qIdx]))
         
-        # we need to keeo the number of references so that we can split references-queries 
+        # we need to keep the number of references so that we can split references-queries 
         # when calculating recall@K
         self.num_references = len(self.dbImages)
     

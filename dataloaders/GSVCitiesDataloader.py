@@ -54,8 +54,8 @@ class GSVCitiesDataModule(pl.LightningDataModule):
                  mean_std=IMAGENET_MEAN_STD,
                  batch_sampler=None,
                  random_sample_from_each_place=True,
-                 val_set_names=['msls_val']
-                #  val_set_names=['pitts30k_val', 'msls_val']
+                #  val_set_names=['msls_val']
+                 val_set_names=['pitts30k_test', 'pitts30k_val', 'msls_val']
                  ):
         super().__init__()
         self.batch_size = batch_size
